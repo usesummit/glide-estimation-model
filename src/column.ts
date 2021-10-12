@@ -19,7 +19,8 @@ export default glide.column({
     }
     const profile = await fetch(
       `https://api.github.com/users/${message.value}`
-    );
-    return JSON.stringify(profile);
+    ).then((x) => x.text());
+
+    return profile;
   },
 });
