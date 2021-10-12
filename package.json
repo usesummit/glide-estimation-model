@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --outfile=public/bundle.js",
+    "build": "script/build.sh",
     "test": "jest"
   },
   "repository": {
