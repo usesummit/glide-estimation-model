@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dvdsgl/glide-computed-column.git"
+    "url": "git+https://github.com/glideapps/glide-computed-column.git"
   },
   "watch": {
     "build": {
@@ -27,9 +27,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dvdsgl/glide-computed-column/issues"
+    "url": "https://github.com/glideapps/glide-computed-column/issues"
   },
-  "homepage": "https://github.com/dvdsgl/glide-computed-column#readme",
+  "homepage": "https://github.com/glideapps/glide-computed-column#readme",
   "devDependencies": {
     "@types/jest": "^27.0.1",
     "concurrently": "^6.3.0",
