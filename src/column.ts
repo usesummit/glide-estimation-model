@@ -1,22 +1,25 @@
 import * as glide from "./glide";
 
 export default glide.column({
-  name: "Echo",
+  name: "GitHub Profile",
   description: "Echo what you send to it.",
   author: "David Siegel <david@glideapps.com>",
   params: {
     message: {
-      displayName: "Message",
+      displayName: "Username",
       type: "primitive",
     },
   },
 
-  result: { type: "primitive" },
+  result: { type: "string" },
 
   async run(message) {
     if (message.value === undefined) {
       return undefined;
     }
-    return `echo ${message.value}`;
+    const profile = await fetch(
+      `https://api.github.com/users/${message.value}`
+    );
+    return JSON.stringify(profile);
   },
 });
