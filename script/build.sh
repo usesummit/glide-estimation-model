@@ -10,4 +10,3 @@ rm public/manifest.js
 
 # Now we build the actual column
 esbuild src/column.ts --bundle --outfile=public/$SLUG/index.js --minify --sourcemap --external:fs --external:path
-echo "<script src='/index.js'></script>" > public/index.html
