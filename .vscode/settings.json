@@ -1,18 +1,12 @@
 {
-    "restoreTerminals.terminals": [
+  "restoreTerminals.terminals": [
+    {
+      "splitTerminals": [
         {
-            "splitTerminals": [
-                {
-                    "name": "frontent",
-                    "commands": [
-                        "npm i",
-                        "npm run start"
-                    ]
-                },
-                {
-                    "name": "dev",
-                }
-            ]
+          "name": "start",
+          "commands": ["npm install", "npm run start"]
         }
-    ],
+      ]
+    }
+  ]
 }
