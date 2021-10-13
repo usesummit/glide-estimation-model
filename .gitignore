@@ -4,4 +4,4 @@ public/bundle.js
 .env
 
 public/*.js*
-public/glide.json
+public/*.json

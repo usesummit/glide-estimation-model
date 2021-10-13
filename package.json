@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently 'npm run watch' 'npm run serve'",
     "watch": "npm-watch",
-    "serve": "http-server public --silent",
+    "serve": "http-server public --silent --cors -c-1",
     "build": "script/build.sh",
     "test": "jest"
   },
