@@ -55,7 +55,7 @@ export default glide.column({
   },
   result: { type: "string" },
 
-  async run(loan, rate, home_price, home_appreciation, additional_monthly_payment, years, property_tax_rate, prop_tax_increase_rate, tax_discount_rate, summit_api_key) {
+  async run(loan, rate, homePrice, homeAppreciation, additionalMonthlyPayment, years, propertyTaxRate, propTaxIncrease_rate, taxDiscountRate, summitApiKey) {
 
     // if (username.value === undefined) {
     //   return undefined;
@@ -72,13 +72,13 @@ export default glide.column({
         "parameters": {
           "loan": loan.value,
           "rate": rate.value,
-          "home_price": home_price.value,
-          "home_appreciation": home_appreciation.value,
-          "additional_monthly_payment": additional_monthly_payment.value,
+          "home_price": homePrice.value,
+          "home_appreciation": homeAppreciation.value,
+          "additional_monthly_payment": additionalMonthlyPayment.value,
           "years": years.value,
-          "property_tax_rate": property_tax_rate.value,
-          "prop_tax_increase_rate": prop_tax_increase_rate.value,
-          "tax_discount_rate": tax_discount_rate.value
+          "property_tax_rate": propertyTaxRate.value,
+          "prop_tax_increase_rate": propTaxIncreaseRate.value,
+          "tax_discount_rate": taxDiscountRate.value
         }
       })
     });
