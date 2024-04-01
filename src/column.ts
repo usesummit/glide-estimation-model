@@ -58,35 +58,36 @@ export default glide.column({
   async run(loan, rate, homePrice, homeAppreciation, additionalMonthlyPayment, years, propertyTaxRate, propTaxIncreaseRate, taxDiscountRate, summitApiKey) {
 
     // Deals with initial loading case.
-    if (loan.value === undefined) {
-      return undefined;
-    }
+    // if (loan === undefined) {
+    //   return undefined;
+    // }
 
-    const apiUrl = `https://api.usesummit.com/v1/free-calculators/b79052/the-home-mortgage-calculator/data/?api_key=${summitApiKey}`;
+    // const apiUrl = `https://api.usesummit.com/v1/free-calculators/b79052/the-home-mortgage-calculator/data/?api_key=${summitApiKey.value}`;
 
-    const modelData = await cache.fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "parameters": {
-          "loan": loan.value,
-          "rate": rate.value,
-          "home_price": homePrice.value,
-          "home_appreciation": homeAppreciation.value,
-          "additional_monthly_payment": additionalMonthlyPayment.value,
-          "years": years.value,
-          "property_tax_rate": propertyTaxRate.value,
-          "prop_tax_increase_rate": propTaxIncreaseRate.value,
-          "tax_discount_rate": taxDiscountRate.value
-        }
-      })
-    });
+    // const modelData = await cache.fetch(apiUrl, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     "parameters": {
+    //       "loan": loan.value,
+    //       "rate": rate.value,
+    //       "home_price": homePrice.value,
+    //       "home_appreciation": homeAppreciation.value,
+    //       "additional_monthly_payment": additionalMonthlyPayment.value,
+    //       "years": years.value,
+    //       "property_tax_rate": propertyTaxRate.value,
+    //       "prop_tax_increase_rate": propTaxIncreaseRate.value,
+    //       "tax_discount_rate": taxDiscountRate.value
+    //     }
+    //   })
+    // });
 
-    // const profile = await cache.fetch(
-    //   `https://api.github.com/users/${username.value}`
-    // );
-    return JSON.stringify(modelData);
+    // // const profile = await cache.fetch(
+    // //   `https://api.github.com/users/${username.value}`
+    // // );
+    return JSON.stringify({})
+    // return JSON.stringify(modelData);
   },
 });
