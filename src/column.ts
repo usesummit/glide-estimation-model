@@ -57,9 +57,10 @@ export default glide.column({
 
   async run(loan, rate, homePrice, homeAppreciation, additionalMonthlyPayment, years, propertyTaxRate, propTaxIncreaseRate, taxDiscountRate, summitApiKey) {
 
-    // if (username.value === undefined) {
-    //   return undefined;
-    // }
+    // Deals with initial loading case.
+    if (loan.value === undefined) {
+      return undefined;
+    }
 
     const apiUrl = `https://api.usesummit.com/v1/free-calculators/b79052/the-home-mortgage-calculator/data/?api_key=${summitApiKey}`;
 
