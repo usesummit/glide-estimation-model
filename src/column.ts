@@ -58,7 +58,7 @@ export default glide.column({
   async run(loan, rate, homePrice, homeAppreciation, additionalMonthlyPayment, years, propertyTaxRate, propTaxIncreaseRate, taxDiscountRate, summitApiKey) {
 
     // Bail if this isn't defined.  Expand to others.
-    if (loan === undefined) {
+    if (loan.value === undefined) {
       return undefined;
     }
 
