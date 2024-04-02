@@ -13,11 +13,6 @@
       "type": "string"
     },
     {
-      "name": "purchasePrice",
-      "displayName": "Purchase Price",
-      "type": "number"
-    },
-    {
       "name": "loan",
       "displayName": "Loan Amount",
       "type": "number"
