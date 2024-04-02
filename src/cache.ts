@@ -49,7 +49,7 @@ export class Cache<T = any> {
     return this.cache.set(key, { timestamp: new Date(), item });
   }
 
-  async fetch(url: string, key = url): Promise<T> {
-    return await this.getWith(key, () => fetch(url).then((x) => x.json()));
+  async fetch(url: string, options: RequestInit, key = url): Promise<T> {
+      return await this.getWith(key, () => fetch(url, options).then((x) => x.json()));
   }
 }

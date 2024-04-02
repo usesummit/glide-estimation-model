@@ -72,7 +72,7 @@ export default glide.column({
     // }
 
     try {
-      
+
       const apiUrl = `https://api.usesummit.com/v1/free-calculators/b79052/the-home-mortgage-calculator/?api_key=${summitApiKey.value}`;
 
       const modelData = await cache.fetch(apiUrl, {
@@ -82,6 +82,11 @@ export default glide.column({
           'X-Api-Key': summitApiKey.value
         },
         body: JSON.stringify({
+          "options": {
+            "start": "2024-04-01",
+            "end": "2039-05-01",
+            "resolution": "year"
+          },
           "parameters": {
             "loan": loan.value,
             "rate": rate.value,
