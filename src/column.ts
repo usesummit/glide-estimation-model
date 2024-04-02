@@ -60,17 +60,8 @@ export default glide.column({
     // Bail if this isn't defined.  Expand to others.
     if (loan.value === undefined) {
       return undefined;
-    }
-
-    const apiUrl = `https://api.usesummit.com/v1/free-calculators/b79052/the-home-mortgage-calculator/`;
-
-    const modelData = await cache.fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Api-Key': summitApiKey.value
-      },
-      body: JSON.stringify({
+    } else {
+      return JSON.stringify({
         "parameters": {
           "loan": loan.value,
           "rate": rate.value,
@@ -81,9 +72,31 @@ export default glide.column({
           "property_tax_rate": propertyTaxRate.value,
           "prop_tax_increase_rate": propTaxIncreaseRate.value,
           "tax_discount_rate": taxDiscountRate.value
-        }
-      })
-    });
+        });
+    }
+
+    // const apiUrl = `https://api.usesummit.com/v1/free-calculators/b79052/the-home-mortgage-calculator/`;
+
+    // const modelData = await cache.fetch(apiUrl, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'X-Api-Key': summitApiKey.value
+    //   },
+    //   body: JSON.stringify({
+    //     "parameters": {
+    //       "loan": loan.value,
+    //       "rate": rate.value,
+    //       "home_price": homePrice.value,
+    //       "home_appreciation": homeAppreciation.value,
+    //       "additional_monthly_payment": additionalMonthlyPayment.value,
+    //       "years": years.value,
+    //       "property_tax_rate": propertyTaxRate.value,
+    //       "prop_tax_increase_rate": propTaxIncreaseRate.value,
+    //       "tax_discount_rate": taxDiscountRate.value
+    //     }
+    //   })
+    // });
 
     // // Filter results that have a 'values' property, then extract 'total_accrued_interest'
     // const filteredResults = modelData.results.filter(r => r.values !== undefined);
@@ -96,7 +109,7 @@ export default glide.column({
     //     totalAccruedInterest = 0; // or handle this case as you see fit
     // }
 
-    return JSON.stringify(modelData);
+    // return JSON.stringify(modelData);
 
   },
 });
