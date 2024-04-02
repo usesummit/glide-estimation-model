@@ -69,11 +69,21 @@ export default glide.column({
       return JSON.stringify({'error': error})
     }
 
-    // Filter results that have a 'values' property that has contents
-    const filteredResults = modelData.results.filter(r => r.values && Object.entries(r.values).length > 0);
-    const lastResult = filteredResults[filteredResults.length - 1];
+    let completionAt;
 
-    return JSON.stringify({'completionAt': lastResult.completion_at});
+    for (let i = modelData.results.length - 1; i >= 0; i--) {
+      const result = modelData.results[i];
+      // Check if 'completion_at' exists in the 'values' object
+      if (result.values && 'completion_at' in result.values) {
+        completionAt = result.values.completion_at;
+      }
+    }
+
+    // // Filter results that have a 'values' property that has contents
+    // const filteredResults = modelData.results.filter(r => r.values && Object.entries(r.values).length > 0);
+    // const lastResult = filteredResults[filteredResults.length - 1];
+
+    return JSON.stringify({'data': completionAt});
 
   },
 
