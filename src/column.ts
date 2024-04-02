@@ -62,7 +62,7 @@ export default glide.column({
       return undefined;
     }
 
-    const apiUrl = `https://api.usesummit.com/v1/free-calculators/b79052/the-home-mortgage-calculator/data/`;
+    const apiUrl = `https://api.usesummit.com/v1/free-calculators/b79052/the-home-mortgage-calculator/`;
 
     const modelData = await cache.fetch(apiUrl, {
       method: 'POST',
