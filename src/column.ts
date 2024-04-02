@@ -68,7 +68,7 @@ export default glide.column({
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Api-Key': summitApiKey
+        'X-Api-Key': summitApiKey.value
       },
       body: JSON.stringify({
         "parameters": {
