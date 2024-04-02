@@ -55,21 +55,22 @@ export default glide.column({
   },
   result: { type: "string" },
 
-  async run(summitApiKey, rate, homePrice, homeAppreciation, additionalMonthlyPayment, years, propertyTaxRate, propTaxIncreaseRate, taxDiscountRate) {
+  async run(summitApiKey, loan, rate, homePrice, homeAppreciation, additionalMonthlyPayment, years, propertyTaxRate, propTaxIncreaseRate, taxDiscountRate) {
 
     // Bail if this isn't defined and echo input parameters.
     if (summitApiKey.value === undefined) {
       return JSON.stringify({
-        "parameters": {
+        "args": {
+          "summitApiKey": summitApiKey.value,
           "loan": loan.value,
           "rate": rate.value,
-          "home_price": homePrice.value,
-          "home_appreciation": homeAppreciation.value,
-          "additional_monthly_payment": additionalMonthlyPayment.value,
+          "homePrice": homePrice.value,
+          "homeAppreciation": homeAppreciation.value,
+          "additionalMonthlyPayment": additionalMonthlyPayment.value,
           "years": years.value,
-          "property_tax_rate": propertyTaxRate.value,
-          "prop_tax_increase_rate": propTaxIncreaseRate.value,
-          "tax_discount_rate": taxDiscountRate.value
+          "propertyTaxRate": propertyTaxRate.value,
+          "propTaxIncreaseRate": propTaxIncreaseRate.value,
+          "taxDiscountRate": taxDiscountRate.value
         }
       });
     }
