@@ -33,7 +33,7 @@ export default glide.column({
       type: "string"
     }
   },
-  result: { type: "number" },
+  result: { type: "string" },
 
   async run(summitApiKey, submittedAt, operationalStatus, averageTtc, operationalSchedule, timezone) {
 
@@ -73,7 +73,7 @@ export default glide.column({
     const filteredResults = modelData.results.filter(r => r.values && Object.entries(r.values).length > 0);
     const lastResult = filteredResults[filteredResults.length - 1];
 
-    return lastResult.completion_at;
+    return JSON.stringify({'completionAt': lastResult.completion_at});
 
   },
 
