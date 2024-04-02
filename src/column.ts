@@ -5,7 +5,7 @@ const cache = new Cache();
 
 export default glide.column({
   name: "Estimated Completion",
-  description: "Returns a completion date based on a provided schedule and task duration.",
+  description: "Returns a completion date based on provided schedule and task duration.",
   author: "Matt Wensing <matt@usesummit.com>",
   params: {
     summitApiKey: {
