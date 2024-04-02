@@ -110,15 +110,8 @@ export default glide.column({
     // Filter results that have a 'values' property, then extract 'total_accrued_interest'
     const filteredResults = modelData.results.filter(r => r.values !== undefined);
     const lastResult = filteredResults[filteredResults.length - 1];
-    let totalAccruedInterest: number;
 
-    if (lastResult && lastResult.values) {
-        totalAccruedInterest = Math.round(lastResult.values.total_accrued_interest);
-    } else {
-        totalAccruedInterest = 0; // or handle this case as you see fit
-    }
-
-    return JSON.stringify({'totalAccruedInterest': totalAccruedInterest});
+    return JSON.stringify({'mortgageData': lastResult});
 
   },
 
