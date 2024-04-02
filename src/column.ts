@@ -4,78 +4,44 @@ import { Cache } from "./cache";
 const cache = new Cache();
 
 export default glide.column({
-  name: "Mortgage Calculator",
-  description: "Calculates total costs of refinancing based on market assumptions.",
+  name: "Estimated Completion",
+  description: "Returns a completion date based on a provided schedule and task duration.",
   author: "Matt Wensing <matt@usesummit.com>",
   params: {
     summitApiKey: {
       displayName: "Summit API Key",
       type: "string"
     },
-    loan: {
-      displayName: "Loan Amount",
+    submittedAt: {
+      displayName: "Submitted At",
+      type: "string"
+    },
+    operationalStatus: {
+      displayName: "Operational Status",
       type: "number"
     },
-    rate: {
-      displayName: "Interest Rate (%)",
+    averageTtc: {
+      displayName: "Average Time to Complete",
       type: "number"
     },
-    homePrice: {
-      displayName: "Home Price",
-      type: "number"
+    operationalSchedule: {
+      displayName: "Operational Schedule",
+      type: "string"
     },
-    homeAppreciation: {
-      displayName: "Home Appreciation Rate (%)",
-      type: "number"
-    },
-    additionalMonthlyPayment: {
-      displayName: "Additional Monthly Payment",
-      type: "number"
-    },
-    years: {
-      displayName: "Loan Term (Years)",
-      type: "number"
-    },
-    propertyTaxRate: {
-      displayName: "Property Tax Rate (%)",
-      type: "number"
-    },
-    propTaxIncreaseRate: {
-      displayName: "Property Tax Increase Rate (%)",
-      type: "number"
-    },
-    taxDiscountRate: {
-      displayName: "Tax Discount Rate (%)",
-      type: "number"
+    timezone: {
+      displayName: "Timezone (Olson)",
+      type: "string"
     }
   },
-  result: { type: "string" },
+  result: { type: "number" },
 
-  async run(summitApiKey, loan, rate, homePrice, homeAppreciation, additionalMonthlyPayment, years, propertyTaxRate, propTaxIncreaseRate, taxDiscountRate) {
-
-    // Bail if this isn't defined and echo input parameters.
-    // if (summitApiKey.value) {
-    //   return JSON.stringify({
-    //     "args": {
-    //       "summitApiKey": summitApiKey.value,
-    //       "loan": loan.value,
-    //       "rate": rate.value,
-    //       "homePrice": homePrice.value,
-    //       "homeAppreciation": homeAppreciation.value,
-    //       "additionalMonthlyPayment": additionalMonthlyPayment.value,
-    //       "years": years.value,
-    //       "propertyTaxRate": propertyTaxRate.value,
-    //       "propTaxIncreaseRate": propTaxIncreaseRate.value,
-    //       "taxDiscountRate": taxDiscountRate.value
-    //     }
-    //   });
-    // }
+  async run(summitApiKey, submittedAt, operationalStatus, averageTtc, operationalSchedule, timezone) {
 
     let modelData;
 
     try {
 
-      const apiUrl = `https://api.usesummit.com/v1/free-calculators/b79052/the-home-mortgage-calculator/?api_key=${summitApiKey.value}`;
+      const apiUrl = `https://api.usesummit.com/v1/zapier-partner-test-account/38b4dc/estimated-resolution-time/`;
 
       modelData = await cache.fetch(apiUrl, {
         method: 'POST',
@@ -85,20 +51,16 @@ export default glide.column({
         },
         body: JSON.stringify({
           "options": {
-            "start": "2024-04-01",
-            "end": "2054-05-01",
-            "resolution": "year"
+              "start": "2024-02-01T00:00:00Z",
+              "end": "2025-03-01T00:00:00Z",
+              "timezone": timezone.value
           },
           "parameters": {
-            "loan": loan.value,
-            "rate": rate.value,
-            "home_price": homePrice.value,
-            "home_appreciation": homeAppreciation.value,
-            "additional_monthly_payment": additionalMonthlyPayment.value,
-            "years": years.value,
-            "property_tax_rate": propertyTaxRate.value,
-            "prop_tax_increase_rate": propTaxIncreaseRate.value,
-            "tax_discount_rate": taxDiscountRate.value
+              "ticket_submitted_at": submittedAt.value,
+              "is_open": operationalStatus.value,
+              "average_ttc": averageTtc.value,
+              "operational_schedule": operationalSchedule.value,
+              "timezone": timezone.value
           }
         })
       });
@@ -111,7 +73,7 @@ export default glide.column({
     const filteredResults = modelData.results.filter(r => r.values && Object.entries(r.values).length > 0);
     const lastResult = filteredResults[filteredResults.length - 1];
 
-    return JSON.stringify({'mortgageData': lastResult});
+    return lastResult.completion_at;
 
   },
 
