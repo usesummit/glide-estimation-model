@@ -71,11 +71,13 @@ export default glide.column({
     //   });
     // }
 
+    let modelData;
+
     try {
 
       const apiUrl = `https://api.usesummit.com/v1/free-calculators/b79052/the-home-mortgage-calculator/?api_key=${summitApiKey.value}`;
 
-      const modelData = await cache.fetch(apiUrl, {
+      modelData = await cache.fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -116,7 +118,7 @@ export default glide.column({
         totalAccruedInterest = 0; // or handle this case as you see fit
     }
 
-    return JSON.stringify(modelData);
+    return JSON.stringify({'totalAccruedInterest': totalAccruedInterest});
 
   },
 
