@@ -12,10 +12,6 @@ export default glide.column({
       displayName: "Summit API Key",
       type: "string"
     },
-    purchasePrice: {
-      displayName: "Purchase Price",
-      type: "number"
-    },
     loan: {
       displayName: "Loan Amount",
       type: "number"
