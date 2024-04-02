@@ -72,7 +72,8 @@ export default glide.column({
           "property_tax_rate": propertyTaxRate.value,
           "prop_tax_increase_rate": propTaxIncreaseRate.value,
           "tax_discount_rate": taxDiscountRate.value
-        });
+        }
+      });
     }
 
     // const apiUrl = `https://api.usesummit.com/v1/free-calculators/b79052/the-home-mortgage-calculator/`;
